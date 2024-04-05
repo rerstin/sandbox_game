@@ -1,0 +1,52 @@
+mgayohai
+rerstin127
+
+207183963
+342851276
+
+
+=============================
+=      File description     =
+=============================
+An open world game, where your avatar can traverse the landscape.
+
+
+=============================
+=  differences in UML   =
+=============================
+we mostly thought about the implementation changes before starting exersise.
+The use of an "eraser" object to delete unseen elements was thought of beforehand, 
+and therefore the only change to the UML is the addition of tyyhe perlin noise.
+
+
+=============================
+=  Implementation details   =
+=============================
+
+------ Infinite World -------
+We created an infinite world using two "eraser" objects that are set on either side of the character outside the screen parameter.
+The erasers move in horizontal relation to the avatar and delete every object that comes in contact with them(terrain, trees and leaves).
+With every step of the program if there is enough space between the already created landscape and the eraser, the part of the world between them is filled in.
+we made it so that every part of the program is generated base on the original seed we randomly chosen in the start of the program. 
+Therefore whenever we leave a certain area and return to it, that part of the world would be reconstructed the same as before.
+
+
+------------ Trees -----------
+We implemented the tree so it would be implemented based on the original seed given at the start of the program.
+We made it so that when we create trees at a certain range we randomly choose if a tree would be planted on a certain x axes. If so, then on eihter sides of the tree there would be a space where no tree is planted.
+To make sure this is alwasys consistent we use a hash map where we keep the results of the whether a tree has been planted in a specific x coordinate.
+
+
+----------- Dilemmas --------
+We wanted to make the game as compact as possible while keeping every element conssitent.
+Early on we thought about an eraser element that would delete unused game objects, but a problem rose when we realize the world may not be kept consistent.
+At first we thought on  ditailing every single element in a memory cach, but soon  realized it would require too much memory with all the added leaves, to each and every tree.
+Luckly we were able to use the seed that created the terrain in perlin noise, to consistenly recreate the elements of the game as we go back and  forth from.
+ 
+ 
+ ----------- Design Choices --------
+ We made it so that while idle the character would switch between images and therefore look more alive with subtle Nuances in his movement. The same we did with his walk animation.
+
+
+
+
